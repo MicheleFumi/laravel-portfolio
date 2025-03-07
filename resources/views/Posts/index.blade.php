@@ -12,7 +12,7 @@
                     <h6 class="card-subtitle mb-2 text-muted">Autore: {{ $post->author }}</h6>
                     <p class="badge bg-primary">{{ $post->categoty }}</p>
                     <p class="card-text mt-2">{{ $post->content }}</p>
-                    <a href={{ route('posts.show', $post->id) }} class="btn btn-dark mt-3">Vai all dettaglio</a>
+                    <a href={{ route('posts.show', $post) }} class="btn btn-dark mt-3">Vai all dettaglio</a>
                 </div>
             </div>
         @endforeach
