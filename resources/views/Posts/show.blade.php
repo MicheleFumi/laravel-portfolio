@@ -10,6 +10,7 @@
             <p class="badge bg-primary">{{ $post->categoty }}</p>
             <p class="card-text mt-2">{{ $post->content }}</p>
             <a href={{ route('posts.index') }} class="btn btn-dark mt-3">Vai alla lista dei post</a>
+
         </div>
     </div>
 @endsection

@@ -3,6 +3,7 @@
 
 
 @section('content')
+    <a href={{ route('posts.create') }} class="btn btn-dark mt-3">Aggiungi un nuovo post</a>
     <div class=" mt-4">
         @foreach ($posts as $post)
             <div class="card mb-3 shadow-sm">
