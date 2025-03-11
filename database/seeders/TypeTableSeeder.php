@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 
-class TypesTableSeeder extends Seeder
+class TypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,6 +18,7 @@ class TypesTableSeeder extends Seeder
         foreach ($types as $type) {
             $newType = new Type();
             $newType->name = $type;
+            $newType->save();
         }
     }
 }

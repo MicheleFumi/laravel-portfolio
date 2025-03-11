@@ -28,6 +28,6 @@ Route::middleware(['auth', 'verified'])
         Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
     });
 
-route::resource("posts", PostController::class)->middleware(['auth', 'verified']);
+route::resource("posts", PostController::class)/* ->middleware(['auth', 'verified']) */;
 
 require __DIR__ . '/auth.php';

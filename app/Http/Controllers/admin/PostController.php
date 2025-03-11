@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -47,7 +47,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $type = Type::all();
+
+        return view('posts.show', compact('post', 'type'));
     }
 
     /**

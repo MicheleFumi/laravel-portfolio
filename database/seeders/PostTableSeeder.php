@@ -16,8 +16,8 @@ class PostTableSeeder extends Seeder
             $newPost = new Post();
             $newPost->title = $faker->word();
             $newPost->author = $faker->name();
-            $newPost->category = $faker->jobTitle();
             $newPost->content = $faker->paragraph();
+            $newPost->type_id = $faker->numberBetween(1, 5);
             $newPost->save();
         }
     }
