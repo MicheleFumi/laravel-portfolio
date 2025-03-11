@@ -1,7 +1,7 @@
 @extends('layouts.posts')
 @yield('title')
 
-@dd($post)
+
 @section('content')
     <div class="card mb-3 shadow-sm">
         <div class="card-body">
