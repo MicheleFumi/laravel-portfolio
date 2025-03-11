@@ -20,8 +20,12 @@
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">categoria</label>
-            <input type="text" name="category" id="category" class="form-control" placeholder=""
-                aria-describedby="helpId" value={{ $post->category }} />
+            <select name="type_id" id="type_id" class="form-select">
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}"{{ $post->type_id == $type->id ? 'selected' : '' }}>
+                        {{ $type->name }}</option>
+                @endforeach
+            </select>
             <small id="helpId" class="text-muted">Modifica la categoria </small>
         </div>
         <div class="mb-3">
@@ -31,6 +35,6 @@
                 <small id="helpId" class="text-muted">Modifica il contenuto </small>
             </div>
         </div>
-        <button type="submit btn btn-dark">Modifica</button>
+        <button type="submit" class="btn btn-dark">Modifica</button>
     </form>
 @endsection

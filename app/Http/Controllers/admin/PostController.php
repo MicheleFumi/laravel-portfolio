@@ -23,7 +23,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $types = Type::all();
+        return view('posts.create', compact('types'));
     }
 
     /**
@@ -31,15 +32,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $NewPost = new Post();
-        $NewPost->title = $data['title'];
-        $NewPost->author = $data['author'];
-        $NewPost->category = $data['category'];
-        $NewPost->content = $data['content'];
-        $NewPost->save();
 
-        return view('posts.show', compact('NewPost'));
+        $data = $request->all();
+
+        $post = new Post();
+        $post->title = $data['title'];
+        $post->author = $data['author'];
+        $post->type_id = $data['type_id'];
+        $post->content = $data['content'];
+        $post->save();
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -56,7 +59,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $types = Type::all();
+        return view('posts.edit', compact('post', 'types'));
     }
 
     /**
@@ -64,11 +68,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
         $data = $request->all();
 
         $post->title = $data['title'];
         $post->author = $data['author'];
-        $post->category = $data['category'];
+        $post->type_id = $data['type_id'];
         $post->content = $data['content'];
         $post->update();
         return view('posts.show', compact('post'));
