@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function types()
+    public function type()
     {
-        return $this->hasMany(Type::class);
+        return $this->belongsTo(Type::class);
     }
 }
