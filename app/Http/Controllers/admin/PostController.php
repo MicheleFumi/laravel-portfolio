@@ -26,6 +26,7 @@ class PostController extends Controller
     {
 
         $types = Type::all();
+        $technologies = Technology::all();
         return view('posts.create', compact('types', 'technologies'));
     }
 
@@ -42,7 +43,10 @@ class PostController extends Controller
         $post->type_id = $data['type_id'];
         $post->content = $data['content'];
         $post->save();
-        $post->technologies()->attach($data['technologies']);
+        if ($request->has('technologies')) {
+            $post->technologies()->attach($data['technologies']);
+        }
+
         return view('posts.show', compact('post'));
     }
 
@@ -73,13 +77,17 @@ class PostController extends Controller
     {
 
         $data = $request->all();
-
         $post->title = $data['title'];
         $post->author = $data['author'];
         $post->type_id = $data['type_id'];
         $post->content = $data['content'];
         $post->update();
-        $post->technologies()->sync($data['technologies']);
+        if ($request->has('technologies')) {
+            $post->technologies()->sync($data['technologies']);
+        } else {
+            $post->technologies()->detach();
+        }
+
         return view('posts.show', compact('post'));
     }
 

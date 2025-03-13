@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('post_technology', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_id')->constrained();
-            $table->foreignId('technology_id')->constrained();
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
+            $table->foreignId('technology_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
