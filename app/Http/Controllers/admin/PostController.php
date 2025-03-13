@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $technologies = Technology::all();
+
         $types = Type::all();
         return view('posts.create', compact('types', 'technologies'));
     }
@@ -36,14 +36,13 @@ class PostController extends Controller
     {
 
         $data = $request->all();
-
         $post = new Post();
         $post->title = $data['title'];
         $post->author = $data['author'];
         $post->type_id = $data['type_id'];
         $post->content = $data['content'];
         $post->save();
-        $post->technology()->attach($data['technologies']);
+        $post->technologies()->attach($data['technologies']);
         return view('posts.show', compact('post'));
     }
 
