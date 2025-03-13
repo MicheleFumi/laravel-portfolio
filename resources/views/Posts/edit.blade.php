@@ -29,6 +29,22 @@
             <small id="helpId" class="text-muted">Modifica la categoria </small>
         </div>
         <div class="mb-3">
+            <label for="technology" class="form-label">Tecnologie</label>
+            <div class="d-flex flex-wrap gap-2">
+                @foreach ($technologies as $technology)
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="technologies[]" id="{{ $technology->id }}"
+                            value="{{ $technology->id }}"
+                            {{ $post->technologies->contains($technology->id) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="{{ $technology->id }}">
+                            {{ $technology->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+            <small class="text-muted d-block mt-2">modifica le tecnologie</small>
+        </div>
+        <div class="mb-3">
             <label for="contenuto" class="form-label">contenuto</label>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="" name="content" id="content">{{ $post->content }}</textarea>

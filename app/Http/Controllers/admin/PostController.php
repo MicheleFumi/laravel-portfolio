@@ -62,7 +62,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $types = Type::all();
-        return view('posts.edit', compact('post', 'types'));
+        $technologies = Technology::all();
+        return view('posts.edit', compact('post', 'types', 'technologies'));
     }
 
     /**
@@ -78,6 +79,7 @@ class PostController extends Controller
         $post->type_id = $data['type_id'];
         $post->content = $data['content'];
         $post->update();
+        $post->technologies()->sync($data['technologies']);
         return view('posts.show', compact('post'));
     }
 
