@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('posts.create', compact('types'));
+        return view('posts.create', compact('types', 'technologies'));
     }
 
     /**
@@ -41,7 +43,7 @@ class PostController extends Controller
         $post->type_id = $data['type_id'];
         $post->content = $data['content'];
         $post->save();
-
+        $post->technology()->attach($data['technologies']);
         return view('posts.show', compact('post'));
     }
 
@@ -51,7 +53,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post = Post::findOrFail($post->id);
-        return view('posts.show', compact('post'));
+        $technologies = Technology::all();
+        return view('posts.show', compact('post', 'technologies'));
     }
 
     /**

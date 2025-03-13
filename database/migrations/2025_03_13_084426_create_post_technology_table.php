@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts_technologies', function (Blueprint $table) {
+        Schema::create('post_technology', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('posts_id')->constrained();
+            $table->foreignId('post_id')->constrained();
             $table->foreignId('technology_id')->constrained();
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts_technologies');
+        Schema::dropIfExists('post_technology');
     }
 };

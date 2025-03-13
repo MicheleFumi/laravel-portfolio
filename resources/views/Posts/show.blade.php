@@ -8,6 +8,11 @@
             <h3 class="card-title">{{ $post->title }}</h3>
             <h5 class="card-subtitle mb-2 text-muted">Autore: {{ $post->author }}</h5>
             <h6>Categoria: {{ $post->type->name }}</h6>
+            {{--  <div class="d-flex gap-2">
+                <span class="badge bg-primary">{{ $post->technologies->name }}</span>
+
+            </div> --}}
+
             <p class="card-text mt-2">{{ $post->content }}</p>
             <a href={{ route('posts.index') }} class="btn btn-dark ">Vai alla lista dei
                 post</a>
