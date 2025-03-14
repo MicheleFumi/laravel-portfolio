@@ -16,4 +16,13 @@ class userController extends Controller
             'data' => $posts
         ]);
     }
+
+    public function show(Post $post)
+    {
+
+        return response()->json([
+            'success' => true,
+            'post' => $post
+        ]);
+    }
 }
