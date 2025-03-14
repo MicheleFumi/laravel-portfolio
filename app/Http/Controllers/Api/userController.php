@@ -19,7 +19,7 @@ class userController extends Controller
 
     public function show(Post $post)
     {
-
+        $post->load('type', 'technologies');
         return response()->json([
             'success' => true,
             'post' => $post
