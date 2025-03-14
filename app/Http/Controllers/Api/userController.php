@@ -10,7 +10,7 @@ class userController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::with('type', 'technologies')->get();
         return response()->json([
             'success' => true,
             'data' => $posts
